@@ -2,17 +2,22 @@
   display: grid;
   grid-template-areas:
     'left'
+    'right'
     'right';
   grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
 
   height: 100vh;
   width: 100vw;
+
+  padding: 25px;
 }
 
 @media only screen and (min-width: 1200px) {
   .root {
     grid-template-areas: 'left right';
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
   }
 }
 
@@ -21,6 +26,8 @@
   grid-area: left;
   justify-content: center;
   align-items: center;
+
+  padding-bottom: 12.5px;
 }
 
 .right {
@@ -28,4 +35,20 @@
   grid-area: right;
   justify-content: center;
   align-items: center;
+
+  padding-top: 12.5px;
+
+  overflow: auto;
+}
+
+@media only screen and (min-width: 1200px) {
+  .left {
+    padding-right: 12.5px;
+    padding-bottom: 0;
+  }
+
+  .right {
+    padding-left: 12.5px;
+    padding-top: 0;
+  }
 }

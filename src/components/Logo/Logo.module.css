@@ -1,0 +1,45 @@
+.root-big {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+}
+
+.root-big-word {
+  width: fit-content;
+
+  padding: 15px 50px;
+
+  font-family: var(--bungee-shade);
+  font-size: 44px;
+  line-height: 54px;
+
+  color: var(--black-light);
+
+  background-color: var(--white);
+
+  border-radius: 50px;
+  box-shadow: var(--box-shadow-medium);
+}
+
+.root-big-word:last-of-type {
+  margin-top: 35px;
+}
+
+@media only screen and (min-width: 1200px) {
+  .root-big-word {
+    padding: 35px;
+
+    font-size: 74px;
+    line-height: 84px;
+  }
+}
+
+.root-small {
+  font-family: var(--bungee-shade);
+  font-size: 60px;
+  line-height: 60px;
+
+  color: var(--black-light);
+}
