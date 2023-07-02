@@ -1,0 +1,51 @@
+html,
+body {
+  min-width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background-image: url('../assets/images/root-bg-01.png');
+  background-size: cover;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --white: #ffffff;
+  --black: #000000;
+
+  --black-light: #161516;
+  --black-lighter: #3b383b;
+  --gray-light: #bdbcbd;
+  --gray-lighter: #ced4da;
+  --gray-lighter-second: #e8eef5;
+  --gray-lighter-third: #f0f1f4;
+
+  --orange: #ff9b73;
+  --yellow: #ffc972;
+  --purple: #b692fe;
+  --blue: #01d4fe;
+  --lime: #e4ee90;
+  --gold: #fdcb04;
+
+  --orange-hover: #f8aa8b;
+  --yellow-hover: #fcd18c;
+  --purple-hover: #c4a8fc;
+  --blue-hover: #7ed9eb;
+  --lime-hover: #e6ebb9;
+  --gold-hover: #f5de83;
+
+  --poppins: 'Poppins', sans-serif;
+  --bungee-shade: 'Bungee Shade', cursive;
+
+  --box-shadow-small: 1px 1px 1px 0 rgba(0, 0, 0, 0.5);
+  --box-shadow-medium: 4px 4px 4px 0 rgba(0, 0, 0, 0.5);
+
+  --button-focus: 5px solid rgb(100, 231, 231);
+}

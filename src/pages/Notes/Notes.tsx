@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 
-const Start = (): JSX.Element => {
+const Notes = (): JSX.Element => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -8,9 +8,9 @@ const Start = (): JSX.Element => {
       exit={{ opacity: 0 }}
       transition={{ duration: 3 }}
     >
-      Start
+      Notes
     </motion.div>
   );
 };
 
-export default Start;
+export default Notes;

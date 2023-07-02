@@ -1,4 +1,4 @@
 export enum RouterPath {
   Start = '/',
-  Main = '/notes',
+  Notes = '/notes',
 }
