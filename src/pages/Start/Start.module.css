@@ -1,0 +1,31 @@
+.root {
+  display: grid;
+  grid-template-areas:
+    'left'
+    'right';
+  grid-template-columns: 1fr;
+
+  height: 100vh;
+  width: 100vw;
+}
+
+@media only screen and (min-width: 1200px) {
+  .root {
+    grid-template-areas: 'left right';
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.left {
+  display: flex;
+  grid-area: left;
+  justify-content: center;
+  align-items: center;
+}
+
+.right {
+  display: flex;
+  grid-area: right;
+  justify-content: center;
+  align-items: center;
+}
