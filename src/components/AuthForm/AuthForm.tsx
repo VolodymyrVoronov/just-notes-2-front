@@ -1,34 +1,63 @@
-import { useState, type ComponentProps } from 'react';
-import { useForm } from 'react-hook-form';
+import { useEventListener } from 'ahooks';
 import cn from 'classnames';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect, useState, type ComponentProps } from 'react';
+import type { FieldValues } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { AiOutlineLogin } from 'react-icons/ai';
 
-import Input from '../Input/Input';
 import Button from '../Button/Button';
+import Input from '../Input/Input';
 
+import { Key } from '../../types';
 import styles from './AuthForm.module.css';
 
 interface IAuthFormProps extends ComponentProps<'div'> {
   className?: string;
 }
 
+type FormInput = 'login' | 'password' | 'confirmPassword';
+
 const AuthForm = ({ className, ...props }: IAuthFormProps): JSX.Element => {
   const [toggle, setToggle] = useState(false);
 
   const {
     register,
+    watch,
     handleSubmit,
     formState: { errors },
+    reset,
+    setFocus,
   } = useForm();
 
-  const onFormSubmit = (data): void => {
+  const onFormSubmit = (
+    data: Record<FormInput, string> | FieldValues,
+  ): void => {
     console.log(data);
   };
 
+  console.log(errors);
+
   const onToggle = (): void => {
     setToggle(!toggle);
+    reset();
+
+    const timeoutId = setTimeout(() => {
+      setFocus('login');
+
+      clearTimeout(timeoutId);
+    }, 1000);
   };
+
+  useEventListener('keydown', (e) => {
+    if (e.key === Key.Escape) {
+      reset();
+    }
+  });
+
+  useEffect(() => {
+    setFocus('login');
+  }, []);
 
   return (
     <div className={cn(styles.root, className)} {...props}>
@@ -111,17 +140,85 @@ const AuthForm = ({ className, ...props }: IAuthFormProps): JSX.Element => {
             <Input
               className={styles.input}
               labelText='Login'
-              name='login'
               type='text'
               aria-label='Login'
+              {...register('login', {
+                required: true,
+                minLength: {
+                  value: 3,
+                  message: 'Login must be at least 3 characters long',
+                },
+              })}
             />
+            {errors.login?.type === 'required' && (
+              <span className={styles.error}>Login is required.</span>
+            )}
+            {errors.login && (
+              <span className={styles.error}>
+                {errors.login.message as string}
+              </span>
+            )}
+
             <Input
               className={styles.input}
               labelText='Password'
-              name='password'
               type='password'
               aria-label='Password'
+              {...register('password', {
+                required: true,
+                validate: {
+                  checkLength: (value) => value.length >= 6,
+                  matchPattern: (value) =>
+                    /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s)(?=.*[!@#$*])/.test(
+                      value,
+                    ),
+                },
+              })}
             />
+            {errors.password?.type === 'required' && (
+              <span className={styles.error}>Password is required.</span>
+            )}
+
+            {errors.password?.type === 'checkLength' && (
+              <span className={styles.error}>
+                Password should be at-least 6 characters.
+              </span>
+            )}
+
+            {errors.password?.type === 'matchPattern' && (
+              <span className={styles.error}>
+                Password should contain at least one uppercase letter, lowercase
+                letter, digit, and special symbol.
+              </span>
+            )}
+
+            {toggle && (
+              <Input
+                className={styles.input}
+                labelText='Confirm password'
+                type='password'
+                aria-label='Confirm password'
+                {...register('confirmedPassword', {
+                  required: true,
+                  validate: (value: string) => {
+                    if (watch('password') !== value) {
+                      return 'Your passwords do not match';
+                    }
+
+                    return true;
+                  },
+                })}
+              />
+            )}
+            {toggle && errors.confirmedPassword?.type === 'required' && (
+              <span className={styles.error}>Password is required.</span>
+            )}
+
+            {toggle && errors.confirmedPassword && (
+              <span className={styles.error}>
+                {errors.confirmedPassword.message as string}
+              </span>
+            )}
           </motion.div>
         </AnimatePresence>
 
@@ -159,8 +256,11 @@ const AuthForm = ({ className, ...props }: IAuthFormProps): JSX.Element => {
             className={styles['login-button']}
             text={toggle ? 'Create' : 'Login'}
             renderIcon={() => <AiOutlineLogin />}
-            iconFontSize={36}
+            iconFontSize={45}
+            iconHeight={45}
+            iconWidth={45}
             type='submit'
+            disabled={Object.keys(errors).length > 0}
           />
         </div>
       </motion.form>

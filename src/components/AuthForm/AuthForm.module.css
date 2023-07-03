@@ -138,3 +138,14 @@
     margin-top: 50px;
   }
 }
+
+.error {
+  margin-top: 5px;
+
+  font-family: var(--poppins);
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+
+  color: tomato;
+}

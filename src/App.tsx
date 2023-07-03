@@ -1,10 +1,10 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
+import { Route, Routes, useLocation } from 'react-router-dom';
 
 import { RouterPath } from './constants';
 
-import Start from './pages/Start/Start';
 import Notes from './pages/Notes/Notes';
+import Start from './pages/Start/Start';
 
 const App = (): JSX.Element => {
   const location = useLocation();

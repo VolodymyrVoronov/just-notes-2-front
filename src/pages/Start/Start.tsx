@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 
-import Logo from '../../components/Logo/Logo';
 import AuthForm from '../../components/AuthForm/AuthForm';
+import Logo from '../../components/Logo/Logo';
 
 import styles from './Start.module.css';
 
