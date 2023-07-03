@@ -3,9 +3,10 @@
   grid-template-areas:
     'left'
     'right'
+    'right'
     'right';
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
 
   height: 100vh;
   width: 100vw;
@@ -15,9 +16,16 @@
 
 @media only screen and (min-width: 1200px) {
   .root {
+    grid-template-areas: 'left right right';
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .root {
     grid-template-areas: 'left right';
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
   }
 }
 

@@ -9,11 +9,11 @@
 .root-big-word {
   width: fit-content;
 
-  padding: 15px 50px;
+  padding: 5px 50px;
 
   font-family: var(--bungee-shade);
-  font-size: 44px;
-  line-height: 54px;
+  font-size: 30px;
+  line-height: 44px;
 
   color: var(--black-light);
 
@@ -24,7 +24,16 @@
 }
 
 .root-big-word:last-of-type {
-  margin-top: 35px;
+  margin-top: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+  .root-big-word {
+    padding: 15px 50px;
+
+    font-size: 44px;
+    line-height: 54px;
+  }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -33,6 +42,10 @@
 
     font-size: 74px;
     line-height: 84px;
+  }
+
+  .root-big-word:last-of-type {
+    margin-top: 35px;
   }
 }
 
