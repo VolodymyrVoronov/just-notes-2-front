@@ -1,11 +1,17 @@
 import { motion } from 'framer-motion';
 
+import type { FormType, IFormData } from '../../types';
+
 import AuthForm from '../../components/AuthForm/AuthForm';
 import Logo from '../../components/Logo/Logo';
 
 import styles from './Start.module.css';
 
 const Start = (): JSX.Element => {
+  const onSubmitButtonClick = (data: IFormData, type: FormType) => {
+    console.log(data, type);
+  };
+
   return (
     <motion.div
       className={styles.root}
@@ -19,7 +25,7 @@ const Start = (): JSX.Element => {
       </section>
 
       <section className={styles.right}>
-        <AuthForm />
+        <AuthForm onSubmitButtonClick={onSubmitButtonClick} />
       </section>
     </motion.div>
   );

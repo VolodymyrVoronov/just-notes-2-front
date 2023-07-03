@@ -6,19 +6,25 @@ import type { FieldValues } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 import { AiOutlineLogin } from 'react-icons/ai';
 
+import type { FormType, IFormData } from '../../types';
+import { Key, Form } from '../../types';
+
 import Button from '../Button/Button';
 import Input from '../Input/Input';
 
-import { Key } from '../../types';
 import styles from './AuthForm.module.css';
 
 interface IAuthFormProps extends ComponentProps<'div'> {
+  onSubmitButtonClick: (data: IFormData, type: FormType) => void;
+
   className?: string;
 }
 
-type FormInput = 'login' | 'password' | 'confirmPassword';
-
-const AuthForm = ({ className, ...props }: IAuthFormProps): JSX.Element => {
+const AuthForm = ({
+  onSubmitButtonClick,
+  className,
+  ...props
+}: IAuthFormProps): JSX.Element => {
   const [toggle, setToggle] = useState(false);
 
   const {
@@ -30,13 +36,11 @@ const AuthForm = ({ className, ...props }: IAuthFormProps): JSX.Element => {
     setFocus,
   } = useForm();
 
-  const onFormSubmit = (
-    data: Record<FormInput, string> | FieldValues,
-  ): void => {
-    console.log(data);
-  };
+  const onFormSubmit = (data: IFormData | FieldValues): void => {
+    onSubmitButtonClick(data as IFormData, toggle ? Form.Register : Form.Login);
 
-  console.log(errors);
+    reset();
+  };
 
   const onToggle = (): void => {
     setToggle(!toggle);
