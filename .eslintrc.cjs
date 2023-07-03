@@ -68,7 +68,7 @@ module.exports = {
             identifiers: true,
             lang: 'en_US', // Set the language
             skipWords: ['some', 'specific', 'words'], // Add words to skip
-            skipIfMatch: ['regex', 'vite', 'ai', 'pathname'], // Specify regex patterns to skip
+            skipIfMatch: ['regex', 'vite', 'ai', 'pathname', 'keydown'], // Specify regex patterns to skip
             minLength: 3, // Minimum word length to check
           },
         ],

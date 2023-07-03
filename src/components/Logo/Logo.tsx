@@ -4,13 +4,13 @@ import cn from 'classnames';
 
 import styles from './Logo.module.css';
 
-interface LogoProps extends ComponentProps<'div'> {
+interface ILogoProps extends ComponentProps<'div'> {
   type: 'big' | 'small';
   text: string;
   className?: string;
 }
 
-const Logo = ({ type, text, className, ...props }: LogoProps): JSX.Element => {
+const Logo = ({ type, text, className, ...props }: ILogoProps): JSX.Element => {
   if (type === 'big') {
     return (
       <div className={cn(styles['root-big'], className)} {...props}>

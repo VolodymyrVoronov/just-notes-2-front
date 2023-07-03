@@ -11,7 +11,13 @@
   height: 100vh;
   width: 100vw;
 
-  padding: 25px;
+  padding: 5px;
+}
+
+@media only screen and (min-width: 768px) {
+  .root {
+    padding: 15px;
+  }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -19,13 +25,8 @@
     grid-template-areas: 'left right right';
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
-  }
-}
 
-@media only screen and (min-width: 1440px) {
-  .root {
-    grid-template-areas: 'left right';
-    grid-template-columns: 1fr 1fr;
+    padding: 25px;
   }
 }
 
@@ -42,7 +43,7 @@
   display: flex;
   grid-area: right;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 
   padding-top: 12.5px;
 
@@ -56,6 +57,8 @@
   }
 
   .right {
+    align-items: center;
+
     padding-left: 12.5px;
     padding-top: 0;
   }

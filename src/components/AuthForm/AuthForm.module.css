@@ -1,0 +1,140 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 768px;
+
+  margin: 0 10px;
+  padding: 20px;
+
+  background-color: var(--white);
+
+  box-shadow: var(--box-shadow-medium);
+  border-radius: 50px;
+}
+
+@media only screen and (min-width: 768px) {
+  .root {
+    padding: 30px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .root {
+    padding: 50px;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  width: 100%;
+}
+
+.text {
+  font-family: var(--poppins);
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .text {
+    font-size: 22px;
+    line-height: 28Fpx;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .text {
+    font-size: 30px;
+    line-height: 36px;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 25px;
+}
+
+@media only screen and (min-width: 1200px) {
+  .inputs {
+    margin-top: 0px;
+  }
+}
+
+.input {
+  margin-top: 15px;
+}
+
+@media only screen and (min-width: 768px) {
+  .input {
+    margin-top: 25px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .input {
+    margin-top: 50px;
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  margin-top: 15px;
+}
+
+.buttons span {
+  width: 100%;
+}
+
+.toggle-button {
+  align-self: flex-start;
+}
+
+.login-button {
+  margin-top: 15px;
+}
+
+@media only screen and (min-width: 576px) {
+  .buttons {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .toggle-button {
+    align-self: unset;
+  }
+
+  .login-button {
+    margin-top: 0px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .buttons {
+    margin-top: 25px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .buttons {
+    margin-top: 50px;
+  }
+}

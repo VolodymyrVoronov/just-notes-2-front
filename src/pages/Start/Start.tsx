@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 
 import Logo from '../../components/Logo/Logo';
+import AuthForm from '../../components/AuthForm/AuthForm';
 
 import styles from './Start.module.css';
 
@@ -17,7 +18,9 @@ const Start = (): JSX.Element => {
         <Logo type='big' text='Just Notes' />
       </section>
 
-      <section className={styles.right}>right</section>
+      <section className={styles.right}>
+        <AuthForm />
+      </section>
     </motion.div>
   );
 };
