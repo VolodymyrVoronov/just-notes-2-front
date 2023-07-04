@@ -14,3 +14,8 @@ export enum Form {
 }
 
 export type FormType = Form.Login | Form.Register;
+
+export enum Token {
+  AccessToken = 'accessToken',
+  RefreshToken = 'refreshToken',
+}

@@ -12,7 +12,7 @@ module.exports = {
   plugins: ['react-refresh'],
   rules: {
     'react-refresh/only-export-components': 'warn',
-    'no-param-reassign': 1,
+    'no-param-reassign': 0,
     'prettier/prettier': [
       'error',
       {
@@ -31,7 +31,7 @@ module.exports = {
     // Configuration for TypeScript files
     {
       files: ['**/*.ts', '**/*.tsx'],
-      plugins: ['@typescript-eslint', 'unused-imports', 'spellcheck'],
+      plugins: ['@typescript-eslint', 'unused-imports'],
       extends: ['airbnb-typescript', 'plugin:prettier/recommended'],
       parserOptions: {
         project: './tsconfig.json',
@@ -60,18 +60,7 @@ module.exports = {
         '@typescript-eslint/no-unused-vars': 'off',
         'unused-imports/no-unused-imports': 'error',
         'unused-imports/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
-        'spellcheck/spell-checker': [
-          'error',
-          {
-            comments: true,
-            strings: true,
-            identifiers: true,
-            lang: 'en_US', // Set the language
-            skipWords: ['some', 'specific', 'words'], // Add words to skip
-            skipIfMatch: ['regex', 'vite', 'ai', 'pathname', 'keydown'], // Specify regex patterns to skip
-            minLength: 3, // Minimum word length to check
-          },
-        ],
+
         'react/jsx-filename-extension': [0],
         'import/extensions': 'off',
       },

@@ -106,6 +106,8 @@
 
 .toggle-button {
   align-self: flex-start;
+
+  width: 100%;
 }
 
 .login-button {
@@ -120,6 +122,7 @@
 
   .toggle-button {
     align-self: unset;
+    width: auto;
   }
 
   .login-button {
