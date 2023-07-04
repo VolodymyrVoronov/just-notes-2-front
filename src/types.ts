@@ -1,3 +1,8 @@
+export enum RouterPath {
+  Start = '/',
+  Notes = '/notes',
+}
+
 export enum Key {
   Escape = 'Escape',
 }

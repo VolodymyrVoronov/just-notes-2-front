@@ -22,14 +22,14 @@ const createAxiosClient = ({
   getCurrentRefreshToken,
   refreshTokenUrl,
   logOut,
-  setRefreshedTokens,
+  setRefreshTokens,
 }: {
   options: CreateAxiosDefaults;
   getCurrentAccessToken: () => string | null;
   getCurrentRefreshToken: () => string | null;
   refreshTokenUrl: string;
   logOut: () => void;
-  setRefreshedTokens: (tokens: {
+  setRefreshTokens: (tokens: {
     accessToken: string;
     refreshToken: string;
   }) => void;
@@ -82,7 +82,7 @@ const createAxiosClient = ({
         originalRequest?._retry !== true
       ) {
         if (isRefreshing) {
-          return new Promise(function (resolve, reject) {
+          return new Promise((resolve, reject) => {
             failedQueue.push({ resolve, reject });
           })
             .then(() => {
@@ -104,7 +104,7 @@ const createAxiosClient = ({
               accessToken: res.data?.accessToken,
               refreshToken: res.data?.refreshToken,
             };
-            setRefreshedTokens(tokens);
+            setRefreshTokens(tokens);
             processQueue(null);
 
             return client(originalRequest);

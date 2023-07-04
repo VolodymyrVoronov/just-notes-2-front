@@ -1,20 +1,15 @@
-import { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { RouterPath } from '../../constants';
-import { useAuthStore } from '../../store/authStore';
 import { getProfile } from '../../services/services';
+import { useAuthStore } from '../../store/authStore';
+import { RouterPath } from '../../types';
 
 const Notes = (): JSX.Element => {
   const navigate = useNavigate();
 
-  const {
-    logout,
-    isLoggedIn,
-    accessToken: aT,
-    refreshToken: rT,
-  } = useAuthStore();
+  const { logout, isLoggedIn, accessToken, refreshToken } = useAuthStore();
 
   useEffect(() => {
     if (!isLoggedIn()) {
@@ -22,8 +17,6 @@ const Notes = (): JSX.Element => {
     }
 
     if (isLoggedIn()) {
-      navigate(RouterPath.Notes);
-
       getProfile()
         .then(({ data }) => {
           console.log(data);
@@ -32,7 +25,7 @@ const Notes = (): JSX.Element => {
           console.error(error);
         });
     }
-  }, [aT, rT]);
+  }, [accessToken, refreshToken]);
 
   return (
     <motion.div

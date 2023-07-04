@@ -1,13 +1,13 @@
-import { useEventListener } from 'ahooks';
+import { useEventListener, useHover } from 'ahooks';
 import cn from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useEffect, useState, type ComponentProps } from 'react';
+import { useEffect, useRef, useState, type ComponentProps } from 'react';
 import type { FieldValues } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 import { AiOutlineLogin } from 'react-icons/ai';
 
 import type { FormType, IFormData } from '../../types';
-import { Key, Form } from '../../types';
+import { Form, Key } from '../../types';
 
 import Button from '../Button/Button';
 import Input from '../Input/Input';
@@ -25,6 +25,8 @@ const AuthForm = ({
   className,
   ...props
 }: IAuthFormProps): JSX.Element => {
+  const rootRef = useRef(null);
+  const isRootHovering = useHover(rootRef);
   const [toggle, setToggle] = useState(false);
 
   const {
@@ -64,7 +66,7 @@ const AuthForm = ({
   }, []);
 
   return (
-    <div className={cn(styles.root, className)} {...props}>
+    <div ref={rootRef} className={cn(styles.root, className)} {...props}>
       <motion.div
         className={styles.header}
         initial={{
@@ -248,7 +250,9 @@ const AuthForm = ({
               }}
             >
               <Button
-                className={styles['toggle-button']}
+                className={cn(styles['toggle-button'], {
+                  [styles['toggle-button-opacity']]: isRootHovering,
+                })}
                 onClick={onToggle}
                 hasIcon={false}
                 text={toggle ? 'I have an account' : 'Create new account'}

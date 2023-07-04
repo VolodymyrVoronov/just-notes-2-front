@@ -1,7 +1,7 @@
 import { AnimatePresence } from 'framer-motion';
 import { Route, Routes, useLocation } from 'react-router-dom';
 
-import { RouterPath } from './constants';
+import { RouterPath } from './types';
 
 import Notes from './pages/Notes/Notes';
 import Start from './pages/Start/Start';

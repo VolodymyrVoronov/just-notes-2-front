@@ -108,6 +108,12 @@
   align-self: flex-start;
 
   width: 100%;
+
+  opacity: 0.5;
+}
+
+.toggle-button-opacity {
+  opacity: 1;
 }
 
 .login-button {
