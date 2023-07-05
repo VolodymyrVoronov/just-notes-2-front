@@ -1,15 +1,23 @@
+import { AxiosError } from 'axios';
 import { motion } from 'framer-motion';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { ERROR_MESSAGE_TIMEOUT } from '../../constants';
 import { getProfile } from '../../services/services';
 import { useAuthStore } from '../../store/authStore';
+import { useUserStore } from '../../store/userStore';
 import { RouterPath } from '../../types';
+
+import Error from '../../components/Error/Error';
 
 const Notes = (): JSX.Element => {
   const navigate = useNavigate();
 
   const { logout, isLoggedIn, accessToken, refreshToken } = useAuthStore();
+  const { saveUserInfo, removeUserInfo } = useUserStore();
+
+  const [resError, setResError] = useState('');
 
   useEffect(() => {
     if (!isLoggedIn()) {
@@ -19,10 +27,18 @@ const Notes = (): JSX.Element => {
     if (isLoggedIn()) {
       getProfile()
         .then(({ data }) => {
-          console.log(data);
+          saveUserInfo(data);
         })
         .catch((error) => {
-          console.error(error);
+          if (error instanceof AxiosError && error.response) {
+            setResError(error.response.data.message);
+
+            const timeoutId = setTimeout(() => {
+              setResError('');
+
+              clearTimeout(timeoutId);
+            }, ERROR_MESSAGE_TIMEOUT);
+          }
         });
     }
   }, [accessToken, refreshToken]);
@@ -36,6 +52,7 @@ const Notes = (): JSX.Element => {
     >
       Notes
       <button onClick={logout}>Logout</button>
+      <Error error={resError} />
     </motion.div>
   );
 };

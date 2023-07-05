@@ -1,5 +1,5 @@
 import { AxiosError } from 'axios';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,6 +9,7 @@ import { useAuthStore } from '../../store/authStore';
 import { Form, RouterPath, type FormType, type IFormData } from '../../types';
 
 import AuthForm from '../../components/AuthForm/AuthForm';
+import Error from '../../components/Error/Error';
 import Logo from '../../components/Logo/Logo';
 
 import styles from './Start.module.css';
@@ -77,18 +78,7 @@ const Start = (): JSX.Element => {
         </section>
       </motion.div>
 
-      <AnimatePresence mode='wait'>
-        {resError && (
-          <motion.span
-            initial={{ opacity: 0, translateY: 25, filter: 'blur(10px)' }}
-            animate={{ opacity: 1, translateY: 0, filter: 'blur(0px)' }}
-            exit={{ opacity: 0, translateY: 25, filter: 'blur(5px)' }}
-            className={styles.error}
-          >
-            {resError}
-          </motion.span>
-        )}
-      </AnimatePresence>
+      <Error error={resError} />
     </>
   );
 };
