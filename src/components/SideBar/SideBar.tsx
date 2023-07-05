@@ -24,11 +24,12 @@ const SideBar = memo(({ className }: ISideBarProps): JSX.Element => {
   const { logout } = useAuthStore();
   const { removeUserInfo } = useUserStore();
 
+  const [width] = useWindowSize();
+
   const sideBarRef = useRef<HTMLButtonElement>(null);
 
   const [showNotesIcons, setShowNotesIcons] = useState(false);
   const [showFavoriteNotes, setShowFavoriteNotes] = useState(false);
-  const [width] = useWindowSize();
 
   const onAddNoteButtonClick = (color: string): void => {
     console.log('color', color);
@@ -46,7 +47,8 @@ const SideBar = memo(({ className }: ISideBarProps): JSX.Element => {
   }, sideBarRef);
 
   const addNoteButtonIconSize = getIconSize(width);
-  const logoutButtonIconSize = getIconSize(width);
+  const logoutButtonIconSize = getIconSize(width, 26, 30, 34, 40);
+  const favoriteButtonIconSize = getIconSize(width, 26, 30, 34, 40);
 
   return (
     <div className={cn(styles.root, className)}>
@@ -160,7 +162,7 @@ const SideBar = memo(({ className }: ISideBarProps): JSX.Element => {
 
         <Button
           onClick={onLogoutButtonClick}
-          className={cn(styles['logout-button'])}
+          className={styles['logout-button']}
           hasText={false}
           aria-label='Logout button'
           renderIcon={() => <AiOutlineLogout />}
