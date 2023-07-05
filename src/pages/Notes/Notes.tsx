@@ -11,6 +11,7 @@ import { RouterPath } from '../../types';
 
 import Error from '../../components/Error/Error';
 import SideBar from '../../components/SideBar/SideBar';
+import Search from '../../components/Search/Search';
 
 import styles from './Notes.module.css';
 
@@ -67,7 +68,9 @@ const Notes = (): JSX.Element => {
         <SideBar />
       </div>
 
-      <div className={styles.right}>Right</div>
+      <div className={styles.right}>
+        <Search />
+      </div>
 
       <Error error={resError} />
     </motion.div>

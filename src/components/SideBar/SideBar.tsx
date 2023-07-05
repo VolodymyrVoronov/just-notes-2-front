@@ -26,7 +26,7 @@ const SideBar = memo(({ className }: ISideBarProps): JSX.Element => {
 
   const [width] = useWindowSize();
 
-  const sideBarRef = useRef<HTMLButtonElement>(null);
+  const addNoteButtonRef = useRef<HTMLButtonElement>(null);
 
   const [showNotesIcons, setShowNotesIcons] = useState(false);
   const [showFavoriteNotes, setShowFavoriteNotes] = useState(false);
@@ -44,7 +44,7 @@ const SideBar = memo(({ className }: ISideBarProps): JSX.Element => {
 
   useClickAway(() => {
     setShowNotesIcons(false);
-  }, sideBarRef);
+  }, addNoteButtonRef);
 
   const addNoteButtonIconSize = getIconSize(width);
   const logoutButtonIconSize = getIconSize(width, 26, 30, 34, 40);
@@ -84,7 +84,7 @@ const SideBar = memo(({ className }: ISideBarProps): JSX.Element => {
         }}
       >
         <Button
-          ref={sideBarRef}
+          ref={addNoteButtonRef}
           onClick={() => setShowNotesIcons(!showNotesIcons)}
           className={cn(styles['add-note-button'], {
             [styles['add-note-button--active']]: showNotesIcons,
