@@ -10,12 +10,15 @@ import { useUserStore } from '../../store/userStore';
 import { RouterPath } from '../../types';
 
 import Error from '../../components/Error/Error';
+import SideBar from '../../components/SideBar/SideBar';
+
+import styles from './Notes.module.css';
 
 const Notes = (): JSX.Element => {
   const navigate = useNavigate();
 
-  const { logout, isLoggedIn, accessToken, refreshToken } = useAuthStore();
-  const { saveUserInfo, removeUserInfo } = useUserStore();
+  const { isLoggedIn, accessToken, refreshToken } = useAuthStore();
+  const { saveUserInfo } = useUserStore();
 
   const [resError, setResError] = useState('');
 
@@ -45,13 +48,27 @@ const Notes = (): JSX.Element => {
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 1 }}
+      initial={{
+        opacity: 0,
+      }}
+      exit={{
+        opacity: 0,
+      }}
+      animate={{
+        opacity: 1,
+        transition: {
+          duration: 0.5,
+          ease: 'easeInOut',
+        },
+      }}
+      className={styles.root}
     >
-      Notes
-      <button onClick={logout}>Logout</button>
+      <div className={styles.left}>
+        <SideBar />
+      </div>
+
+      <div className={styles.right}>Right</div>
+
       <Error error={resError} />
     </motion.div>
   );

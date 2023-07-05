@@ -68,7 +68,7 @@ const AuthForm = ({
     setFocus('login');
   }, []);
 
-  const iconSize = getIconSize(width);
+  const submitButtonIconSize = getIconSize(width);
 
   return (
     <div ref={rootRef} className={cn(styles.root, className)} {...props}>
@@ -269,9 +269,9 @@ const AuthForm = ({
             className={styles['login-button']}
             text={toggle ? 'Create' : 'Login'}
             renderIcon={() => <AiOutlineLogin />}
-            iconFontSize={iconSize}
-            iconHeight={iconSize}
-            iconWidth={iconSize}
+            iconFontSize={submitButtonIconSize}
+            iconHeight={submitButtonIconSize}
+            iconWidth={submitButtonIconSize}
             type='submit'
             disabled={Object.keys(errors).length > 0}
           />

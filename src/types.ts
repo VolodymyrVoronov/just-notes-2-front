@@ -24,3 +24,16 @@ export enum Token {
   AccessToken = 'accessToken',
   RefreshToken = 'refreshToken',
 }
+
+export enum Color {
+  orange = 'orange',
+  yellow = 'yellow',
+  purple = 'purple',
+  blue = 'blue',
+  lime = 'lime',
+}
+
+export interface INoteButton {
+  id: number;
+  color: keyof typeof Color;
+}

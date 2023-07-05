@@ -1,0 +1,78 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 100%;
+}
+
+.add-note-button {
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.add-note-button:hover {
+  scale: 1.1;
+}
+
+.add-note-button:disabled {
+  pointer-events: none;
+}
+
+.add-note-button svg {
+  transition: all 0.3s ease-in-out;
+}
+
+.add-note-button--active {
+  scale: 1.1;
+}
+
+.add-note-button--active svg {
+  transform: rotate(135deg);
+
+  transition: all 0.3s ease-in-out;
+}
+
+@media only screen and (min-width: 576px) {
+  .add-note-button {
+    margin-top: 30px;
+    padding: 15px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .add-note-button {
+    margin-top: 40px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .add-note-button {
+    margin-top: 50px;
+  }
+}
+
+.footer-buttons {
+  margin-top: auto;
+}
+
+.favorite-notes-button {
+  padding: 10px;
+}
+
+.logout-button {
+  margin-top: 10px;
+  padding: 10px;
+}
+
+@media only screen and (min-width: 576px) {
+  .logout-button {
+    margin-top: 20px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .logout-button {
+    margin-top: 30px;
+  }
+}
