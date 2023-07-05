@@ -6,6 +6,8 @@ import type { FieldValues } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 import { AiOutlineLogin } from 'react-icons/ai';
 
+import getIconSize from '../../helpers/getIconSize';
+import useWindowSize from '../../hooks/useWindowSize';
 import type { FormType, IFormData } from '../../types';
 import { Form, Key } from '../../types';
 
@@ -28,6 +30,7 @@ const AuthForm = ({
   const rootRef = useRef(null);
   const isRootHovering = useHover(rootRef);
   const [toggle, setToggle] = useState(false);
+  const [width] = useWindowSize();
 
   const {
     register,
@@ -64,6 +67,8 @@ const AuthForm = ({
   useEffect(() => {
     setFocus('login');
   }, []);
+
+  const iconSize = getIconSize(width);
 
   return (
     <div ref={rootRef} className={cn(styles.root, className)} {...props}>
@@ -264,9 +269,9 @@ const AuthForm = ({
             className={styles['login-button']}
             text={toggle ? 'Create' : 'Login'}
             renderIcon={() => <AiOutlineLogin />}
-            iconFontSize={45}
-            iconHeight={45}
-            iconWidth={45}
+            iconFontSize={iconSize}
+            iconHeight={iconSize}
+            iconWidth={iconSize}
             type='submit'
             disabled={Object.keys(errors).length > 0}
           />
