@@ -1,6 +1,6 @@
+import cn from 'classnames';
 import type { ComponentProps, Ref } from 'react';
 import { forwardRef } from 'react';
-import cn from 'classnames';
 import { AiOutlineSearch } from 'react-icons/ai';
 
 import styles from './Search.module.css';

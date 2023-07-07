@@ -38,6 +38,16 @@ const Start = (): JSX.Element => {
 
       login({ accessToken, refreshToken });
     } catch (error) {
+      if (error instanceof AxiosError) {
+        setResError(error.message);
+
+        const timeoutId = setTimeout(() => {
+          setResError('');
+
+          clearTimeout(timeoutId);
+        }, ERROR_MESSAGE_TIMEOUT);
+      }
+
       if (error instanceof AxiosError && error.response) {
         setResError(error.response.data.message);
 

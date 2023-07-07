@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { ERROR_MESSAGE_TIMEOUT } from '../../constants';
-import { getProfile } from '../../services/services';
+import { getProfile, getAllNotes } from '../../services/services';
 import { useAuthStore } from '../../store/authStore';
 import { useUserStore } from '../../store/userStore';
 import { RouterPath } from '../../types';
@@ -46,6 +46,26 @@ const Notes = (): JSX.Element => {
         });
     }
   }, [accessToken, refreshToken]);
+
+  useEffect(() => {
+    if (isLoggedIn()) {
+      getAllNotes()
+        .then(({ data }) => {
+          console.log(data);
+        })
+        .catch((error) => {
+          if (error instanceof AxiosError && error.response) {
+            setResError(error.response.data.message);
+
+            const timeoutId = setTimeout(() => {
+              setResError('');
+
+              clearTimeout(timeoutId);
+            }, ERROR_MESSAGE_TIMEOUT);
+          }
+        });
+    }
+  }, []);
 
   return (
     <motion.div

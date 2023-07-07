@@ -29,3 +29,7 @@ export const logIn = ({
 export const getProfile = () => {
   return client.get('/users/profile');
 };
+
+export const getAllNotes = () => {
+  return client.get('/notes/all');
+};
