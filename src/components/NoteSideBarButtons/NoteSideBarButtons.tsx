@@ -10,7 +10,7 @@ import styles from './NoteSideBarButtons.module.css';
 
 interface INotesSideBarButtonsProps extends ComponentProps<'div'> {
   showNotesIcons: boolean;
-  onClickHandler: (color: string) => void;
+  onClickHandler: (color: keyof typeof Color) => void;
 }
 
 const noteButtons: INoteButton[] = [

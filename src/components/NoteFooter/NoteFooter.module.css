@@ -1,0 +1,55 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.date {
+  font-family: var(--poppins);
+  font-size: 16px;
+  line-height: 16px;
+}
+
+@media only screen and (min-width: 576px) {
+  .date {
+    font-size: 22px;
+    line-height: 22px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .date {
+    font-size: 28px;
+    line-height: 28px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .date {
+    font-size: 32px;
+    line-height: 32px;
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+
+  margin-left: auto;
+}
+
+.button {
+  margin-left: 5px;
+  padding: 5px;
+}
+
+.button-favorite svg {
+  color: var(--gold);
+}
+
+@media only screen and (min-width: 576px) {
+  .button {
+    padding: 10px;
+  }
+}

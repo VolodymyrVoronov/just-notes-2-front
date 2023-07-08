@@ -1,0 +1,139 @@
+.root {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 5px;
+
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+@media only screen and (min-width: 576px) {
+  .root {
+    padding: 10px;
+
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .root {
+    padding: 15px;
+
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .root {
+    padding: 25px;
+  }
+}
+
+.root-orange {
+  background-color: var(--orange);
+}
+
+.root-yellow {
+  background-color: var(--yellow);
+}
+
+.root-purple {
+  background-color: var(--purple);
+}
+
+.root-blue {
+  background-color: var(--blue);
+}
+
+.root-lime {
+  background-color: var(--lime);
+}
+
+.editor {
+  width: 100%;
+  height: 100%;
+
+  overflow: auto;
+
+  font-family: var(--poppins);
+  font-size: 18px;
+  line-height: 20px;
+
+  border: none;
+  resize: none;
+}
+
+.editor-orange {
+  background-color: var(--orange-light);
+}
+
+.editor-yellow {
+  background-color: var(--yellow-light);
+}
+
+.editor-purple {
+  background-color: var(--purple-light);
+}
+
+.editor-blue {
+  background-color: var(--blue-light);
+}
+
+.editor-lime {
+  background-color: var(--lime-light);
+}
+
+.editor[contenteditable] {
+  color: var(--gray);
+}
+
+.editor::-webkit-scrollbar {
+  width: 5px;
+}
+
+.editor::-webkit-scrollbar-track {
+  background-color: var(--gray-lighter-third);
+}
+
+.editor::-webkit-scrollbar-thumb {
+  background-color: var(--gray-light);
+}
+
+.editor::-webkit-scrollbar-thumb:hover {
+  background-color: var(--gray-lighter);
+}
+
+.footer {
+  margin-top: 5px;
+}
+
+@media only screen and (min-width: 576px) {
+  .footer {
+    margin-top: 10px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .footer {
+    margin-top: 15px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .footer {
+    margin-top: 25px;
+  }
+}

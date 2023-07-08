@@ -1,5 +1,6 @@
-import axios from 'axios';
 import type { CreateAxiosDefaults } from 'axios';
+import axios from 'axios';
+import { setupCache } from 'axios-cache-interceptor';
 
 let failedQueue: any[] = [];
 let isRefreshing = false;
@@ -34,7 +35,7 @@ const createAxiosClient = ({
     refreshToken: string;
   }) => void;
 }) => {
-  const client = axios.create(options);
+  const client = setupCache(axios.create(options));
 
   client.interceptors.request.use(
     (config: any) => {
@@ -57,7 +58,7 @@ const createAxiosClient = ({
       // Do something with response data
       return response;
     },
-    (error) => {
+    async (error) => {
       const originalRequest = error.config;
       // In "axios": "^1.1.3" there is an issue with headers, and this is the workaround.
       originalRequest.headers = JSON.parse(
@@ -82,15 +83,14 @@ const createAxiosClient = ({
         originalRequest?._retry !== true
       ) {
         if (isRefreshing) {
-          return new Promise((resolve, reject) => {
-            failedQueue.push({ resolve, reject });
-          })
-            .then(() => {
-              return client(originalRequest);
-            })
-            .catch((err) => {
-              return Promise.reject(err);
+          try {
+            await new Promise((resolve, reject) => {
+              failedQueue.push({ resolve, reject });
             });
+            return await client(originalRequest);
+          } catch (err) {
+            return await Promise.reject(err);
+          }
         }
         isRefreshing = true;
         // eslint-disable-next-line no-underscore-dangle

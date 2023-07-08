@@ -60,6 +60,10 @@
   padding: 10px;
 }
 
+.favorite-notes-button-active svg {
+  color: var(--gold);
+}
+
 .logout-button {
   margin-top: 10px;
   margin-bottom: 2px;

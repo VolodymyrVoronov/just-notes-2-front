@@ -1,7 +1,7 @@
 .root {
   display: grid;
   grid-template-areas: 'l r';
-  grid-template-columns: 75px 1fr;
+  grid-template-columns: 65px 1fr;
   grid-template-rows: 1fr;
 
   height: calc(100vh - 10px);
@@ -52,6 +52,7 @@
 }
 
 .left {
+  position: relative;
   overflow: auto;
 
   display: flex;
@@ -64,6 +65,10 @@
 }
 
 .right {
+  overflow: hidden;
+
+  position: relative;
+
   display: flex;
   flex-direction: column;
   grid-area: r;
@@ -99,4 +104,26 @@
   .right {
     padding: 25px;
   }
+}
+
+.notes {
+  overflow: auto;
+
+  margin-top: 25px;
+}
+
+.notes::-webkit-scrollbar {
+  width: 10px;
+}
+
+.notes::-webkit-scrollbar-track {
+  background-color: var(--gray-lighter-third);
+}
+
+.notes::-webkit-scrollbar-thumb {
+  background-color: var(--gray-light);
+}
+
+.notes::-webkit-scrollbar-thumb:hover {
+  background-color: var(--gray-lighter);
 }

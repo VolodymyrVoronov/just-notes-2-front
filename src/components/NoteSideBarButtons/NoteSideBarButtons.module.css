@@ -99,21 +99,21 @@
 }
 
 .note-button-orange:hover {
-  background-color: var(--orange-hover);
+  background-color: var(--orange-light);
 }
 
 .note-button-yellow:hover {
-  background-color: var(--yellow-hover);
+  background-color: var(--yellow-light);
 }
 
 .note-button-purple:hover {
-  background-color: var(--purple-hover);
+  background-color: var(--purple-light);
 }
 
 .note-button-blue:hover {
-  background-color: var(--blue-hover);
+  background-color: var(--blue-light);
 }
 
 .note-button-lime:hover {
-  background-color: var(--lime-hover);
+  background-color: var(--lime-light);
 }
