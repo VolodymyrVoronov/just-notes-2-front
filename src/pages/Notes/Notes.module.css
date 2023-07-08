@@ -127,3 +127,13 @@
 .notes::-webkit-scrollbar-thumb:hover {
   background-color: var(--gray-lighter);
 }
+
+.no-notes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: var(--poppins);
+  font-size: 26px;
+  line-height: 26px;
+}

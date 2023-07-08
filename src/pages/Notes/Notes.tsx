@@ -198,7 +198,17 @@ const Notes = (): JSX.Element => {
       </div>
 
       <div className={styles.right}>
-        <Search onChange={onSearchNoteInputChange} value={searchedNotesQuery} />
+        <Search
+          onChange={onSearchNoteInputChange}
+          value={searchedNotesQuery}
+          disabled={!notes.length}
+        />
+
+        {!notes.length && (
+          <div className={styles['no-notes']}>
+            <span>No notes</span>
+          </div>
+        )}
 
         <div className={styles.notes}>
           <NotesItems
